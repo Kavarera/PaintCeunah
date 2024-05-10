@@ -40,4 +40,4 @@ You are free to use, modify, and distribute the software for non-commercial purp
 
 ## Credits
 
-PaintCeunah is developed and maintained by [Kavarera](linkedin.com/in/kavarera). Special thanks to [contributors](link-to-contributors) for their valuable contributions.
+PaintCeunah is developed and maintained by [Kavarera](https://www.linkedin.com/in/kavarera). Special thanks to [contributors](link-to-contributors) for their valuable contributions.
