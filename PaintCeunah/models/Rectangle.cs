@@ -16,7 +16,7 @@ namespace PaintCeunah.models
 
         public override void Draw(Graphics graphics)
         {
-            // Hitung koordinat dan dimensi persegi panjang
+            // Menggunakan method Math.Min dan Math.Max untuk menentukan koordinat dan dimensi persegi panjang
             int x = Math.Min(StartPoint.X, EndPoint.X);
             int y = Math.Min(StartPoint.Y, EndPoint.Y);
             int width = Math.Abs(StartPoint.X - EndPoint.X);

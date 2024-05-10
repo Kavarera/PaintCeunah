@@ -30,5 +30,10 @@ namespace PaintCeunah.models
 
         public abstract void Draw(Graphics graphics); // Metode abstract untuk menggambar bentuk
 
+
+        public virtual void AddPoint(Point point)
+        {
+
+        }
     }
 }

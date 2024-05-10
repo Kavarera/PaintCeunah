@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,14 +15,14 @@ namespace PaintCeunah
 {
     public partial class Form1 : Form
     {
-        private Point startPoint; // Titik awal ketika mouse ditekan
-        private Point endPoint; // Titik akhir ketika mouse dilepas
-        private Rectangle circleRect; // Rectangle yang mengelilingi lingkaran
-        private bool isDrawing; // Untuk menandai apakah sedang dalam mode menggambar
+        private Point startPoint; // Titik awal
+        private Point endPoint; // Titik akhir
+        private bool isDrawing;
         private EnumShape currentActiveShape= EnumShape.NONE;
         private List<Shape> tumpukanGambar;
         private Shape tempShape;
 
+        private bool isCircle = false; //Untuk toggle ellipse dan circle
         public Form1()
         {
             InitializeComponent();
@@ -32,6 +33,7 @@ namespace PaintCeunah
             canvasPanel.MouseUp += CanvasPanel_MouseUp;
             canvasPanel.Paint += CanvasPanel_Paint;
             panel1.Paint += panel1_Paint;
+
         }
 
 
@@ -41,6 +43,22 @@ namespace PaintCeunah
             {
                 startPoint = e.Location;
                 isDrawing = true;
+                if(currentActiveShape == EnumShape.CIRCLE)
+                {
+                    if(e.Button == MouseButtons.Right)
+                    {
+                        isCircle = false;
+                    }
+                    else
+                    {
+                        isCircle = true;
+                    }
+                }
+                else if(currentActiveShape == EnumShape.PENCIL)
+                {
+                    tempShape = new Pencil(currentActiveShape, startPoint, endPoint,
+                        Color.Red, Color.Black, new Pen(Color.Green, 2));
+                }
             }
         }
 
@@ -48,8 +66,25 @@ namespace PaintCeunah
         {
             if (isDrawing && currentActiveShape != EnumShape.NONE)
             {
-                endPoint = e.Location;
-                canvasPanel.Invalidate(); // Meminta panel untuk digambar ulang
+
+                if (currentActiveShape == EnumShape.PENCIL && e.Button == MouseButtons.Left)
+                {
+                    tempShape.AddPoint(e.Location);
+                    canvasPanel.Invalidate();
+                }
+                else
+                {
+                    endPoint = e.Location;
+                    if(e.Button == MouseButtons.Right)
+                    {
+                        isCircle = false;
+                    }
+                    else
+                    {
+                        isCircle = true;
+                    }
+                    canvasPanel.Invalidate(); // Meminta panel untuk digambar ulang
+                }
             }
         }
 
@@ -59,11 +94,8 @@ namespace PaintCeunah
             {
                 endPoint = e.Location;
                 isDrawing = false;
-                if (currentActiveShape == EnumShape.CIRCLE)
-                {
-                    tumpukanGambar.Add(tempShape);
-                    canvasPanel.Invalidate();
-                }
+                tumpukanGambar.Add(tempShape);
+                canvasPanel.Invalidate();
             }
         }
 
@@ -76,8 +108,31 @@ namespace PaintCeunah
                 {
                      tempShape= new Circle(currentActiveShape, startPoint, endPoint, 
                         Color.Red, Color.Green, new Pen(Color.Green, 10));
+                    (tempShape as Circle).SetDrawingCircle(isCircle);
                     tempShape.Draw(e.Graphics);
                     
+                }
+                if(currentActiveShape == EnumShape.SQUARE)
+                {
+                    tempShape = new Square(currentActiveShape, startPoint, endPoint,
+                        Color.Red, Color.Green, new Pen(Color.Green, 10));
+                    tempShape.Draw(e.Graphics);
+                }
+                if (currentActiveShape == EnumShape.RECTANGLE)
+                {
+                    tempShape = new RectangleDrawer(currentActiveShape, startPoint, endPoint,
+                        Color.Red, Color.Green, new Pen(Color.Green, 10));
+                    tempShape.Draw(e.Graphics);
+                }
+                if (currentActiveShape == EnumShape.LINE)
+                {
+                    tempShape = new LineDrawer(currentActiveShape, startPoint, endPoint,
+                        Color.Red, Color.Green, new Pen(Color.Green, 10));
+                    tempShape.Draw(e.Graphics);
+                }
+                if (currentActiveShape == EnumShape.PENCIL)
+                {
+                    tempShape.Draw(e.Graphics);
                 }
                 foreach (Shape item in tumpukanGambar)
                 {
@@ -118,11 +173,44 @@ namespace PaintCeunah
             {
                 btnSquare.BackColor = Color.Aqua;
             }
+            else if (currentActiveShape == EnumShape.RECTANGLE)
+            {
+                btnRectangle.BackColor = Color.Aqua;
+            }
+            else if (currentActiveShape == EnumShape.LINE)
+            {
+                btnLine.BackColor = Color.Aqua;
+            }
+            else if (currentActiveShape == EnumShape.PENCIL)
+            {
+                btnPencil.BackColor = Color.Aqua;
+            }
         }
 
         private void btnSquare_Click(object sender, EventArgs e)
         {
             currentActiveShape = EnumShape.SQUARE;
+            panel1.Invalidate();
+            panel1.Refresh();
+        }
+
+        private void btnRectangle_Click(object sender, EventArgs e)
+        {
+            currentActiveShape = EnumShape.RECTANGLE;
+            panel1.Invalidate();
+            panel1.Refresh();
+        }
+
+        private void btnLine_Click(object sender, EventArgs e)
+        {
+            currentActiveShape = EnumShape.LINE;
+            panel1.Invalidate();
+            panel1.Refresh();
+        }
+
+        private void btnPencil_Click(object sender, EventArgs e)
+        {
+            currentActiveShape = EnumShape.PENCIL;
             panel1.Invalidate();
             panel1.Refresh();
         }

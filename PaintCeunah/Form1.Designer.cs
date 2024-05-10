@@ -104,6 +104,7 @@
             this.btnPencil.Size = new System.Drawing.Size(41, 43);
             this.btnPencil.TabIndex = 11;
             this.btnPencil.UseVisualStyleBackColor = true;
+            this.btnPencil.Click += new System.EventHandler(this.btnPencil_Click);
             // 
             // panel8
             // 
@@ -122,6 +123,7 @@
             this.btnLine.Size = new System.Drawing.Size(41, 43);
             this.btnLine.TabIndex = 9;
             this.btnLine.UseVisualStyleBackColor = true;
+            this.btnLine.Click += new System.EventHandler(this.btnLine_Click);
             // 
             // panel7
             // 
@@ -140,6 +142,7 @@
             this.btnRectangle.Size = new System.Drawing.Size(41, 43);
             this.btnRectangle.TabIndex = 7;
             this.btnRectangle.UseVisualStyleBackColor = true;
+            this.btnRectangle.Click += new System.EventHandler(this.btnRectangle_Click);
             // 
             // panel6
             // 
