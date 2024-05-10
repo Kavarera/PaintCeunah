@@ -43,21 +43,34 @@ namespace PaintCeunah
             {
                 startPoint = e.Location;
                 isDrawing = true;
-                if(currentActiveShape == EnumShape.CIRCLE)
+                Debug.WriteLine("Mouse ditekan");
+
+                switch (currentActiveShape)
                 {
-                    if(e.Button == MouseButtons.Right)
-                    {
-                        isCircle = false;
-                    }
-                    else
-                    {
-                        isCircle = true;
-                    }
-                }
-                else if(currentActiveShape == EnumShape.PENCIL)
-                {
-                    tempShape = new Pencil(currentActiveShape, startPoint, endPoint,
-                        Color.Red, Color.Black, new Pen(Color.Green, 2));
+                    case EnumShape.CIRCLE:
+                        tempShape = new Circle(currentActiveShape, startPoint, startPoint,
+                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                        isCircle = (e.Button== MouseButtons.Right)?false:true;
+                        break;
+                    case EnumShape.SQUARE:
+                        tempShape = new Square(currentActiveShape, startPoint, startPoint,
+                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                        break;
+                    case EnumShape.RECTANGLE:
+                        tempShape = new RectangleDrawer(currentActiveShape, startPoint, startPoint,
+                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                        break;
+                    case EnumShape.LINE:
+                        tempShape = new LineDrawer(currentActiveShape, startPoint, startPoint,
+                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                        break;
+                    case EnumShape.PENCIL:
+                        tempShape = new Pencil(currentActiveShape, startPoint, startPoint,
+                            Color.Red, Color.Black, new Pen(Color.Green, 2));
+                        break;
+                    default:
+                        // Default behavior
+                        break;
                 }
             }
         }
@@ -75,14 +88,6 @@ namespace PaintCeunah
                 else
                 {
                     endPoint = e.Location;
-                    if(e.Button == MouseButtons.Right)
-                    {
-                        isCircle = false;
-                    }
-                    else
-                    {
-                        isCircle = true;
-                    }
                     canvasPanel.Invalidate(); // Meminta panel untuk digambar ulang
                 }
             }
@@ -103,37 +108,13 @@ namespace PaintCeunah
         {
             if (isDrawing && currentActiveShape != EnumShape.NONE)
             {
+                tempShape.EndPoint = endPoint;
 
                 if(currentActiveShape == EnumShape.CIRCLE)
                 {
-                     tempShape= new Circle(currentActiveShape, startPoint, endPoint, 
-                        Color.Red, Color.Green, new Pen(Color.Green, 10));
                     (tempShape as Circle).SetDrawingCircle(isCircle);
-                    tempShape.Draw(e.Graphics);
-                    
                 }
-                if(currentActiveShape == EnumShape.SQUARE)
-                {
-                    tempShape = new Square(currentActiveShape, startPoint, endPoint,
-                        Color.Red, Color.Green, new Pen(Color.Green, 10));
-                    tempShape.Draw(e.Graphics);
-                }
-                if (currentActiveShape == EnumShape.RECTANGLE)
-                {
-                    tempShape = new RectangleDrawer(currentActiveShape, startPoint, endPoint,
-                        Color.Red, Color.Green, new Pen(Color.Green, 10));
-                    tempShape.Draw(e.Graphics);
-                }
-                if (currentActiveShape == EnumShape.LINE)
-                {
-                    tempShape = new LineDrawer(currentActiveShape, startPoint, endPoint,
-                        Color.Red, Color.Green, new Pen(Color.Green, 10));
-                    tempShape.Draw(e.Graphics);
-                }
-                if (currentActiveShape == EnumShape.PENCIL)
-                {
-                    tempShape.Draw(e.Graphics);
-                }
+                tempShape.Draw(e.Graphics);
                 foreach (Shape item in tumpukanGambar)
                 {
                     item.Draw(e.Graphics);
