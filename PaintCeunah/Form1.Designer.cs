@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnColor = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnPencil = new System.Windows.Forms.Button();
             this.panel8 = new System.Windows.Forms.Panel();
@@ -50,14 +50,27 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.canvasPanel = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.tbBorderWidth = new System.Windows.Forms.TextBox();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.btnBorderColor = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.panel13 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button8);
+            this.panel1.Controls.Add(this.btnClear);
+            this.panel1.Controls.Add(this.panel13);
+            this.panel1.Controls.Add(this.btnBorderColor);
+            this.panel1.Controls.Add(this.panel14);
+            this.panel1.Controls.Add(this.btnColor);
             this.panel1.Controls.Add(this.panel9);
             this.panel1.Controls.Add(this.btnPencil);
             this.panel1.Controls.Add(this.panel8);
@@ -77,15 +90,16 @@
             this.panel1.Size = new System.Drawing.Size(1227, 89);
             this.panel1.TabIndex = 0;
             // 
-            // button8
+            // btnColor
             // 
-            this.button8.Dock = System.Windows.Forms.DockStyle.Left;
-            this.button8.Image = ((System.Drawing.Image)(resources.GetObject("button8.Image")));
-            this.button8.Location = new System.Drawing.Point(389, 46);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(41, 43);
-            this.button8.TabIndex = 13;
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnColor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnColor.Image = ((System.Drawing.Image)(resources.GetObject("btnColor.Image")));
+            this.btnColor.Location = new System.Drawing.Point(389, 46);
+            this.btnColor.Name = "btnColor";
+            this.btnColor.Size = new System.Drawing.Size(41, 43);
+            this.btnColor.TabIndex = 13;
+            this.btnColor.UseVisualStyleBackColor = true;
+            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
             // 
             // panel9
             // 
@@ -205,6 +219,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel12);
+            this.panel2.Controls.Add(this.panel11);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -261,6 +277,81 @@
             this.canvasPanel.Size = new System.Drawing.Size(1227, 467);
             this.canvasPanel.TabIndex = 2;
             // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.tbBorderWidth);
+            this.panel11.Controls.Add(this.label2);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel11.Location = new System.Drawing.Point(109, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(97, 46);
+            this.panel11.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Border Width";
+            // 
+            // tbBorderWidth
+            // 
+            this.tbBorderWidth.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbBorderWidth.Location = new System.Drawing.Point(0, 24);
+            this.tbBorderWidth.Name = "tbBorderWidth";
+            this.tbBorderWidth.Size = new System.Drawing.Size(97, 22);
+            this.tbBorderWidth.TabIndex = 3;
+            this.tbBorderWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBorderWidth_KeyPress);
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel12.Location = new System.Drawing.Point(206, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(15, 46);
+            this.panel12.TabIndex = 3;
+            // 
+            // btnBorderColor
+            // 
+            this.btnBorderColor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnBorderColor.Image = ((System.Drawing.Image)(resources.GetObject("btnBorderColor.Image")));
+            this.btnBorderColor.Location = new System.Drawing.Point(445, 46);
+            this.btnBorderColor.Name = "btnBorderColor";
+            this.btnBorderColor.Size = new System.Drawing.Size(41, 43);
+            this.btnBorderColor.TabIndex = 15;
+            this.btnBorderColor.UseVisualStyleBackColor = true;
+            this.btnBorderColor.Click += new System.EventHandler(this.btnBorderColor_Click);
+            // 
+            // panel14
+            // 
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel14.Location = new System.Drawing.Point(430, 46);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(15, 43);
+            this.panel14.TabIndex = 14;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Location = new System.Drawing.Point(501, 46);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(41, 43);
+            this.btnClear.TabIndex = 17;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // panel13
+            // 
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel13.Location = new System.Drawing.Point(486, 46);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(15, 43);
+            this.panel13.TabIndex = 16;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -277,6 +368,8 @@
             this.panel2.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -298,12 +391,20 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnSquare;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnColor;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel canvasPanel;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.TextBox tbBorderWidth;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnBorderColor;
+        private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Panel panel13;
     }
 }
 

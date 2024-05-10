@@ -19,7 +19,6 @@ namespace PaintCeunah.models
         public override void Draw(Graphics graphics)
         {
             // Hitung koordinat dan dimensi lingkaran atau elips
-            Debug.WriteLine(isDrawingCircle);
             // Menggambar lingkaran atau elips
             if (isDrawingCircle)
             {

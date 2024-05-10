@@ -1,14 +1,8 @@
 ﻿using PaintCeunah.models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace PaintCeunah
@@ -21,6 +15,8 @@ namespace PaintCeunah
         private EnumShape currentActiveShape= EnumShape.NONE;
         private List<Shape> tumpukanGambar;
         private Shape tempShape;
+        private Color fillColor;
+        private Color strokeColor;
 
         private bool isCircle = false; //Untuk toggle ellipse dan circle
         public Form1()
@@ -43,30 +39,34 @@ namespace PaintCeunah
             {
                 startPoint = e.Location;
                 isDrawing = true;
-                Debug.WriteLine("Mouse ditekan");
 
                 switch (currentActiveShape)
                 {
                     case EnumShape.CIRCLE:
                         tempShape = new Circle(currentActiveShape, startPoint, startPoint,
-                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                            fillColor, strokeColor, new Pen(strokeColor,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()):5));
                         isCircle = (e.Button== MouseButtons.Right)?false:true;
                         break;
                     case EnumShape.SQUARE:
                         tempShape = new Square(currentActiveShape, startPoint, startPoint,
-                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                            fillColor, strokeColor, new Pen(strokeColor,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
                         break;
                     case EnumShape.RECTANGLE:
                         tempShape = new RectangleDrawer(currentActiveShape, startPoint, startPoint,
-                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                            fillColor, strokeColor, new Pen(strokeColor,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
                         break;
                     case EnumShape.LINE:
                         tempShape = new LineDrawer(currentActiveShape, startPoint, startPoint,
-                            Color.Red, Color.Green, new Pen(Color.Green, 10));
+                            fillColor, strokeColor, new Pen(strokeColor,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
                         break;
                     case EnumShape.PENCIL:
                         tempShape = new Pencil(currentActiveShape, startPoint, startPoint,
-                            Color.Red, Color.Black, new Pen(Color.Green, 2));
+                            fillColor, strokeColor, new Pen(strokeColor,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
                         break;
                     default:
                         // Default behavior
@@ -100,33 +100,27 @@ namespace PaintCeunah
                 endPoint = e.Location;
                 isDrawing = false;
                 tumpukanGambar.Add(tempShape);
+                tempShape = null;
                 canvasPanel.Invalidate();
             }
         }
 
         private void CanvasPanel_Paint(object sender, PaintEventArgs e)
         {
-            if (isDrawing && currentActiveShape != EnumShape.NONE)
+            if (tempShape != null)
             {
                 tempShape.EndPoint = endPoint;
 
-                if(currentActiveShape == EnumShape.CIRCLE)
+                if (currentActiveShape == EnumShape.CIRCLE)
                 {
                     (tempShape as Circle).SetDrawingCircle(isCircle);
                 }
                 tempShape.Draw(e.Graphics);
-                foreach (Shape item in tumpukanGambar)
-                {
-                    item.Draw(e.Graphics);
-                }
-
             }
-            else if (!startPoint.IsEmpty && !endPoint.IsEmpty)
+
+            foreach (Shape item in tumpukanGambar)
             {
-                foreach (Shape item in tumpukanGambar)
-                {
-                    item.Draw(e.Graphics);
-                }
+                item.Draw(e.Graphics);
             }
         }
 
@@ -194,6 +188,61 @@ namespace PaintCeunah
             currentActiveShape = EnumShape.PENCIL;
             panel1.Invalidate();
             panel1.Refresh();
+        }
+
+        private void btnColor_Click(object sender, EventArgs e)
+        {
+            Thread colorThread = new Thread(() =>
+            {
+                using (ColorDialog cd = new ColorDialog())
+                {
+                    if (cd.ShowDialog() == DialogResult.OK)
+                    {
+                        // Setelah dialog ditutup, update fillColor di UI thread
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            fillColor = cd.Color;
+                        });
+                    }
+                }
+            });
+            colorThread.SetApartmentState(ApartmentState.STA); // Mengatur state thread ke STA (Single Threaded Apartment)
+            colorThread.Start();
+        }
+
+        private void tbBorderWidth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {// Hanya izinkan angka (0-9), tombol backspace, dan tombol delete
+                e.Handled = true; // Mengabaikan karakter selain angka
+            }
+        }
+
+        private void btnBorderColor_Click(object sender, EventArgs e)
+        {
+            Thread colorThread = new Thread(() =>
+            {
+                using (ColorDialog cd = new ColorDialog())
+                {
+                    if (cd.ShowDialog() == DialogResult.OK)
+                    {
+                        // Setelah dialog ditutup, update fillColor di UI thread
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            strokeColor = cd.Color;
+                        });
+                    }
+                }
+            });
+            colorThread.SetApartmentState(ApartmentState.STA); // Mengatur state thread ke STA (Single Threaded Apartment)
+            colorThread.Start();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            tumpukanGambar.Clear();
+            tempShape = null;
+            canvasPanel.Invalidate();
         }
     }
 }
