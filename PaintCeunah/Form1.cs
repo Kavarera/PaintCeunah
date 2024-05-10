@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -243,6 +244,26 @@ namespace PaintCeunah
             tumpukanGambar.Clear();
             tempShape = null;
             canvasPanel.Invalidate();
+        }
+
+        private void btnSaveAs_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "JPEG files (*.jpg)|*.jpg";
+                sfd.FilterIndex = 1;
+                sfd.RestoreDirectory = true;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    // Buat sebuah Bitmap dari canvasPanel
+                    Bitmap bmp = new Bitmap(canvasPanel.Width, canvasPanel.Height);
+                    canvasPanel.DrawToBitmap(bmp, new Rectangle(0, 0, canvasPanel.Width, canvasPanel.Height));
+
+                    // Simpan bitmap sebagai file JPEG
+                    bmp.Save(sfd.FileName, ImageFormat.Jpeg);
+                }
+            }
         }
     }
 }
