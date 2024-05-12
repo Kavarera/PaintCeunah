@@ -335,6 +335,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "PaintCeunah by Kavarera";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel11.ResumeLayout(false);

@@ -1,6 +1,7 @@
 ﻿using PaintCeunah.models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Linq;
@@ -98,7 +99,7 @@ namespace PaintCeunah
                 else
                 {
                     endPoint = e.Location;
-                    canvasPanel.Refresh(); // Meminta panel untuk digambar ulang
+                    canvasPanel.Refresh();// Meminta panel untuk digambar ulang
                 }
             }
         }
@@ -280,6 +281,29 @@ namespace PaintCeunah
                     bmp.Save(sfd.FileName, ImageFormat.Jpeg);
                 }
             }
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (canvasPanel.Width <= 0 || canvasPanel.Height <= 0)
+                return;
+
+            Bitmap newBitmap = new Bitmap(canvasPanel.Width, canvasPanel.Height);
+            using (Graphics g = Graphics.FromImage(newBitmap))
+            {
+                g.Clear(Color.White);
+                if (tempBitmap != null)
+                {
+                    g.DrawImage(tempBitmap, 0, 0);
+                }
+            }
+
+            tempBitmap?.Dispose(); 
+            tempBitmap = newBitmap;
+
+            canvasPanel.Image?.Dispose(); 
+            canvasPanel.Image = tempBitmap;
+            canvasPanel.Refresh();
         }
     }
 }
