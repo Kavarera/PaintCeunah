@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -19,6 +20,9 @@ namespace PaintCeunah
         private Color fillColor;
         private Color strokeColor;
 
+        private Pen p = new Pen(Color.Black, 2);
+        private Bitmap tempBitmap;
+
         private bool isCircle = false; //Untuk toggle ellipse dan circle
         public Form1()
         {
@@ -30,7 +34,8 @@ namespace PaintCeunah
             canvasPanel.MouseUp += CanvasPanel_MouseUp;
             canvasPanel.Paint += CanvasPanel_Paint;
             panel1.Paint += panel1_Paint;
-
+            tempBitmap = new Bitmap(canvasPanel.Width, canvasPanel.Height);
+            canvasPanel.Image = tempBitmap;
         }
 
 
@@ -84,12 +89,17 @@ namespace PaintCeunah
                 if (currentActiveShape == EnumShape.PENCIL && e.Button == MouseButtons.Left)
                 {
                     tempShape.AddPoint(e.Location);
-                    canvasPanel.Invalidate();
+                    using(Graphics g = Graphics.FromImage(tempBitmap))
+                    {
+                        tempShape.Draw(g);
+                        endPoint = e.Location;
+                    }
+                    canvasPanel.Refresh();
                 }
                 else
                 {
                     endPoint = e.Location;
-                    canvasPanel.Invalidate(); // Meminta panel untuk digambar ulang
+                    canvasPanel.Refresh(); // Meminta panel untuk digambar ulang
                 }
             }
         }
@@ -101,8 +111,11 @@ namespace PaintCeunah
                 endPoint = e.Location;
                 isDrawing = false;
                 tumpukanGambar.Add(tempShape);
-                tempShape = null;
-                canvasPanel.Invalidate();
+                using(Graphics g = Graphics.FromImage(tempBitmap))
+                {
+                    tempShape.Draw(g);
+                }
+                canvasPanel.Refresh();
             }
         }
 
@@ -119,10 +132,10 @@ namespace PaintCeunah
                 tempShape.Draw(e.Graphics);
             }
 
-            foreach (Shape item in tumpukanGambar)
-            {
-                item.Draw(e.Graphics);
-            }
+            //foreach (Shape item in tumpukanGambar)
+            //{
+            //    item.Draw(e.Graphics);
+            //}
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
@@ -243,7 +256,11 @@ namespace PaintCeunah
         {
             tumpukanGambar.Clear();
             tempShape = null;
-            canvasPanel.Invalidate();
+            using(Graphics g = Graphics.FromImage(tempBitmap))
+            {
+                g.Clear(Color.White);
+            }
+            canvasPanel.Refresh();
         }
 
         private void btnSaveAs_Click(object sender, EventArgs e)

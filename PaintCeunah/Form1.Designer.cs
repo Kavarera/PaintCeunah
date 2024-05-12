@@ -30,6 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.btnBorderColor = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
             this.btnColor = new System.Windows.Forms.Button();
             this.panel9 = new System.Windows.Forms.Panel();
             this.btnPencil = new System.Windows.Forms.Button();
@@ -42,23 +46,20 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnCircle = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.tbBorderWidth = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.canvasPanel = new System.Windows.Forms.Panel();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.tbBorderWidth = new System.Windows.Forms.TextBox();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.btnBorderColor = new System.Windows.Forms.Button();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.panel13 = new System.Windows.Forms.Panel();
-            this.btnSaveAs = new System.Windows.Forms.Button();
+            this.canvasPanel = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canvasPanel)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -84,6 +85,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1285, 89);
             this.panel1.TabIndex = 0;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Location = new System.Drawing.Point(392, 46);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(41, 43);
+            this.btnClear.TabIndex = 17;
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // panel13
+            // 
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel13.Location = new System.Drawing.Point(377, 46);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(15, 43);
+            this.panel13.TabIndex = 16;
+            // 
+            // btnBorderColor
+            // 
+            this.btnBorderColor.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnBorderColor.Image = ((System.Drawing.Image)(resources.GetObject("btnBorderColor.Image")));
+            this.btnBorderColor.Location = new System.Drawing.Point(336, 46);
+            this.btnBorderColor.Name = "btnBorderColor";
+            this.btnBorderColor.Size = new System.Drawing.Size(41, 43);
+            this.btnBorderColor.TabIndex = 15;
+            this.btnBorderColor.UseVisualStyleBackColor = true;
+            this.btnBorderColor.Click += new System.EventHandler(this.btnBorderColor_Click);
+            // 
+            // panel14
+            // 
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel14.Location = new System.Drawing.Point(321, 46);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(15, 43);
+            this.panel14.TabIndex = 14;
             // 
             // btnColor
             // 
@@ -203,6 +242,54 @@
             this.panel2.Size = new System.Drawing.Size(1285, 46);
             this.panel2.TabIndex = 0;
             // 
+            // btnSaveAs
+            // 
+            this.btnSaveAs.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btnSaveAs.Location = new System.Drawing.Point(1210, 0);
+            this.btnSaveAs.Name = "btnSaveAs";
+            this.btnSaveAs.Size = new System.Drawing.Size(75, 46);
+            this.btnSaveAs.TabIndex = 4;
+            this.btnSaveAs.Text = "Save As";
+            this.btnSaveAs.UseVisualStyleBackColor = true;
+            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            // 
+            // panel12
+            // 
+            this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel12.Location = new System.Drawing.Point(97, 0);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(15, 46);
+            this.panel12.TabIndex = 3;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.tbBorderWidth);
+            this.panel11.Controls.Add(this.label2);
+            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel11.Location = new System.Drawing.Point(0, 0);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(97, 46);
+            this.panel11.TabIndex = 2;
+            // 
+            // tbBorderWidth
+            // 
+            this.tbBorderWidth.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbBorderWidth.Location = new System.Drawing.Point(0, 24);
+            this.tbBorderWidth.Name = "tbBorderWidth";
+            this.tbBorderWidth.Size = new System.Drawing.Size(97, 22);
+            this.tbBorderWidth.TabIndex = 3;
+            this.tbBorderWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBorderWidth_KeyPress);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Location = new System.Drawing.Point(0, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 16);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Border Width";
+            // 
             // panel10
             // 
             this.panel10.Controls.Add(this.label1);
@@ -230,92 +317,11 @@
             this.canvasPanel.Name = "canvasPanel";
             this.canvasPanel.Size = new System.Drawing.Size(1285, 536);
             this.canvasPanel.TabIndex = 2;
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.tbBorderWidth);
-            this.panel11.Controls.Add(this.label2);
-            this.panel11.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel11.Location = new System.Drawing.Point(0, 0);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(97, 46);
-            this.panel11.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Location = new System.Drawing.Point(0, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 16);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Border Width";
-            // 
-            // tbBorderWidth
-            // 
-            this.tbBorderWidth.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tbBorderWidth.Location = new System.Drawing.Point(0, 24);
-            this.tbBorderWidth.Name = "tbBorderWidth";
-            this.tbBorderWidth.Size = new System.Drawing.Size(97, 22);
-            this.tbBorderWidth.TabIndex = 3;
-            this.tbBorderWidth.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbBorderWidth_KeyPress);
-            // 
-            // panel12
-            // 
-            this.panel12.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel12.Location = new System.Drawing.Point(97, 0);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(15, 46);
-            this.panel12.TabIndex = 3;
-            // 
-            // btnBorderColor
-            // 
-            this.btnBorderColor.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnBorderColor.Image = ((System.Drawing.Image)(resources.GetObject("btnBorderColor.Image")));
-            this.btnBorderColor.Location = new System.Drawing.Point(336, 46);
-            this.btnBorderColor.Name = "btnBorderColor";
-            this.btnBorderColor.Size = new System.Drawing.Size(41, 43);
-            this.btnBorderColor.TabIndex = 15;
-            this.btnBorderColor.UseVisualStyleBackColor = true;
-            this.btnBorderColor.Click += new System.EventHandler(this.btnBorderColor_Click);
-            // 
-            // panel14
-            // 
-            this.panel14.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel14.Location = new System.Drawing.Point(321, 46);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(15, 43);
-            this.panel14.TabIndex = 14;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(392, 46);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(41, 43);
-            this.btnClear.TabIndex = 17;
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
-            // 
-            // panel13
-            // 
-            this.panel13.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel13.Location = new System.Drawing.Point(377, 46);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(15, 43);
-            this.panel13.TabIndex = 16;
-            // 
-            // btnSaveAs
-            // 
-            this.btnSaveAs.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btnSaveAs.Location = new System.Drawing.Point(1210, 0);
-            this.btnSaveAs.Name = "btnSaveAs";
-            this.btnSaveAs.Size = new System.Drawing.Size(75, 46);
-            this.btnSaveAs.TabIndex = 4;
-            this.btnSaveAs.Text = "Save As";
-            this.btnSaveAs.UseVisualStyleBackColor = true;
-            this.btnSaveAs.Click += new System.EventHandler(this.btnSaveAs_Click);
+            this.canvasPanel.TabStop = false;
+            this.canvasPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.CanvasPanel_Paint);
+            this.canvasPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CanvasPanel_MouseDown);
+            this.canvasPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CanvasPanel_MouseMove);
+            this.canvasPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CanvasPanel_MouseUp);
             // 
             // Form1
             // 
@@ -331,10 +337,11 @@
             this.Text = "PaintCeunah by Kavarera";
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.canvasPanel)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -357,7 +364,6 @@
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel canvasPanel;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.TextBox tbBorderWidth;
         private System.Windows.Forms.Label label2;
@@ -367,6 +373,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Button btnSaveAs;
+        private System.Windows.Forms.PictureBox canvasPanel;
     }
 }
 
