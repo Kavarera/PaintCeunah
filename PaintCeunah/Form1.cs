@@ -18,9 +18,8 @@ namespace PaintCeunah
         private List<Shape> tumpukanGambar;
         private Shape tempShape;
         private Color fillColor;
-        private Color strokeColor;
+        private Color strokeColor = Color.Black;
 
-        private Pen p = new Pen(Color.Black, 2);
         private Bitmap tempBitmap;
 
         private bool isCircle = false; //Untuk toggle ellipse dan circle
