@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnEraser = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.btnClear = new System.Windows.Forms.Button();
             this.panel13 = new System.Windows.Forms.Panel();
             this.btnBorderColor = new System.Windows.Forms.Button();
@@ -64,6 +66,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnEraser);
+            this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnClear);
             this.panel1.Controls.Add(this.panel13);
             this.panel1.Controls.Add(this.btnBorderColor);
@@ -85,6 +89,25 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1285, 89);
             this.panel1.TabIndex = 0;
+            // 
+            // btnEraser
+            // 
+            this.btnEraser.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnEraser.Image = ((System.Drawing.Image)(resources.GetObject("btnEraser.Image")));
+            this.btnEraser.Location = new System.Drawing.Point(448, 46);
+            this.btnEraser.Name = "btnEraser";
+            this.btnEraser.Size = new System.Drawing.Size(50, 43);
+            this.btnEraser.TabIndex = 19;
+            this.btnEraser.UseVisualStyleBackColor = true;
+            this.btnEraser.Click += new System.EventHandler(this.btnEraser_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel3.Location = new System.Drawing.Point(433, 46);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(15, 43);
+            this.panel3.TabIndex = 18;
             // 
             // btnClear
             // 
@@ -375,6 +398,8 @@
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Button btnSaveAs;
         private System.Windows.Forms.PictureBox canvasPanel;
+        private System.Windows.Forms.Button btnEraser;
+        private System.Windows.Forms.Panel panel3;
     }
 }
 

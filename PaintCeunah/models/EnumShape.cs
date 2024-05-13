@@ -13,6 +13,7 @@ namespace PaintCeunah.models
         SQUARE,
         LINE,
         PENCIL,
+        ERASER,
         NONE
     }
 }

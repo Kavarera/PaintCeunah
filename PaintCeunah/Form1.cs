@@ -74,6 +74,11 @@ namespace PaintCeunah
                             fillColor, strokeColor, new Pen(strokeColor,
                             (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
                         break;
+                    case EnumShape.ERASER:
+                        tempShape = new Pencil(currentActiveShape, startPoint, startPoint,
+                            fillColor, strokeColor, new Pen(Color.White,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
+                        break;
                     default:
                         // Default behavior
                         break;
@@ -90,6 +95,16 @@ namespace PaintCeunah
                 {
                     tempShape.AddPoint(e.Location);
                     using(Graphics g = Graphics.FromImage(tempBitmap))
+                    {
+                        tempShape.Draw(g);
+                        endPoint = e.Location;
+                    }
+                    canvasPanel.Refresh();
+                }
+                else if (currentActiveShape == EnumShape.ERASER && e.Button == MouseButtons.Left)
+                {
+                    tempShape.AddPoint(e.Location);
+                    using (Graphics g = Graphics.FromImage(tempBitmap))
                     {
                         tempShape.Draw(g);
                         endPoint = e.Location;
@@ -173,6 +188,10 @@ namespace PaintCeunah
             else if (currentActiveShape == EnumShape.PENCIL)
             {
                 btnPencil.BackColor = Color.Aqua;
+            }
+            else if(currentActiveShape == EnumShape.ERASER)
+            {
+                btnEraser.BackColor = Color.Aqua;
             }
         }
 
@@ -303,7 +322,13 @@ namespace PaintCeunah
 
             canvasPanel.Image?.Dispose(); 
             canvasPanel.Image = tempBitmap;
-            canvasPanel.Refresh();
+        }
+
+        private void btnEraser_Click(object sender, EventArgs e)
+        {
+            currentActiveShape = EnumShape.ERASER;
+            panel1.Invalidate();
+            panel1.Refresh();
         }
     }
 }

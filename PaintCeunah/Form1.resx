@@ -118,10 +118,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnEraser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAHUAAAB1AePCB2UAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAABDElEQVQ4T5XTsUsCcRjGcUVtifwjhEpodAmFcJGmRldrdWtvLIMGZycXl1oy6R8QogLp70gJHCwy
+        EYr8Pnf3VurddT7wgfu98Lz349BYhMSRR845rZg1tPHtaSKBSFH5FiMUcYAPtPDvEpU7eMWuBl5K0JIr
+        JDXwSwo3eMeeBguxJZdYuom9WWV9uKDsY4IL5+TF3jzFF44QlhMM3Ue3rK/9hgJOEbYkjSfc6aDyNaxs
+        OYOWHDqn36j8iGdsatDAYtlSg5ZUnNN8eVsDZYxj99E35/hEFQ/o46es9DzaHpQ69EtUOavB32xBV9LV
+        /JZs4B4DLJUtQUvW0cULdjQIiy2xP05Uc8mgHF2sPAMBh0mvlXFxkwAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnClear.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAJ
-        0wAACdMBTpOQpQAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD+SURBVDhPrZNP
+        0QAACdEBMW1TLAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD+SURBVDhPrZNP
         jgFBHEYrWIgQG1eQSVxA/Ek4gQzBzB0ISwcgDsBiRhgLYsNmYuUEXMv31a+6U1Wa9MJLXup1UdVKp9UT
         2vAfHo3sTxiLCvyBSX0lsH9hWV95FGDP8gyH3hzlHD+z57g23OBqxjjezKg3COBZ43Iyo8NbNyjBhKSG
         zbmAyA02MC+pWnANuZCyOUdycCvpMoMfkpoO5ELKDijCuaQLH1NDUsM7X4z2cepwLOnShV+SesEf/Ia8
@@ -132,7 +143,7 @@
   <data name="btnBorderColor.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        cgAAAHIBsYahGgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD/SURBVDhPndOx
+        cAAAAHABznhikwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAD/SURBVDhPndOx
         TsJQFIfxBjeJ78GgkzFhMEzoDJFRX8CVncSJMPAGbIyysCoQDLM+gjEwGHgAJqN8X4GkCfRC/Se/tPeS
         c3puG6J/pIYpPnHrRpbc4wcd9PGFYHKbq3mAxa14tW4yW9/uTwMfeEIPv2jC2MRmd/EqJWUs8YcBKjA2
         sdjjBJPHO2zQxQmqcBKPE4zFb5jjEU5ikyGeEUyy+NwNYhMnke8kNRaPkSz26trjOIkv1uPsJFTsRP5+
