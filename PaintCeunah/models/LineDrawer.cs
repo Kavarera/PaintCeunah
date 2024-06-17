@@ -16,6 +16,8 @@ namespace PaintCeunah.models
 
         public override void Draw(Graphics graphics)
         {
+            //get mid point
+            Point midPoint = GetMidPoint();
             // Hitung titik tengah garis
             float midX = (StartPoint.X + EndPoint.X) / 2;
             float midY = (StartPoint.Y + EndPoint.Y) / 2;
@@ -27,6 +29,7 @@ namespace PaintCeunah.models
             graphics.TranslateTransform(midX, midY);
             graphics.RotateTransform(RotationAngle);
             graphics.TranslateTransform(-midX, -midY);
+            ApplyScaleTransform(graphics, midPoint);
 
             // Gambar garis dengan rotasi
             graphics.DrawLine(BorderWidth, StartPoint, EndPoint);

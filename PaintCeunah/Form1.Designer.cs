@@ -73,6 +73,11 @@
             this.canvasPanel = new System.Windows.Forms.PictureBox();
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnTriangle = new System.Windows.Forms.Button();
+            this.panel20 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.tbScale = new System.Windows.Forms.TextBox();
+            this.btnScale = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -81,6 +86,7 @@
             this.panel11.SuspendLayout();
             this.panel10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPanel)).BeginInit();
+            this.panel21.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -277,6 +283,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel21);
+            this.panel2.Controls.Add(this.panel20);
             this.panel2.Controls.Add(this.panel18);
             this.panel2.Controls.Add(this.panel17);
             this.panel2.Controls.Add(this.panel16);
@@ -531,6 +539,55 @@
             this.btnTriangle.UseVisualStyleBackColor = true;
             this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
             // 
+            // panel20
+            // 
+            this.panel20.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel20.Location = new System.Drawing.Point(646, 0);
+            this.panel20.Name = "panel20";
+            this.panel20.Size = new System.Drawing.Size(15, 64);
+            this.panel20.TabIndex = 10;
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.tbScale);
+            this.panel21.Controls.Add(this.btnScale);
+            this.panel21.Controls.Add(this.label6);
+            this.panel21.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel21.Location = new System.Drawing.Point(661, 0);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(168, 64);
+            this.panel21.TabIndex = 11;
+            // 
+            // tbScale
+            // 
+            this.tbScale.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbScale.Location = new System.Drawing.Point(0, 19);
+            this.tbScale.Name = "tbScale";
+            this.tbScale.Size = new System.Drawing.Size(168, 22);
+            this.tbScale.TabIndex = 7;
+            this.tbScale.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMoveX_KeyPress);
+            // 
+            // btnScale
+            // 
+            this.btnScale.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnScale.Location = new System.Drawing.Point(0, 41);
+            this.btnScale.Name = "btnScale";
+            this.btnScale.Size = new System.Drawing.Size(168, 23);
+            this.btnScale.TabIndex = 6;
+            this.btnScale.Text = "Scale";
+            this.btnScale.UseVisualStyleBackColor = true;
+            this.btnScale.Click += new System.EventHandler(this.btnScale_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label6.Location = new System.Drawing.Point(0, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 16);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Scale";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -557,6 +614,8 @@
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.canvasPanel)).EndInit();
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -607,6 +666,11 @@
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Button btnTriangle;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.TextBox tbScale;
+        private System.Windows.Forms.Button btnScale;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Panel panel20;
     }
 }
 

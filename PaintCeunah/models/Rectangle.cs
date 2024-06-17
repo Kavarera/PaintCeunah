@@ -21,15 +21,24 @@ namespace PaintCeunah.models
             int y = Math.Min(StartPoint.Y, EndPoint.Y) + Translation.Y;
             int width = Math.Abs(StartPoint.X - EndPoint.X);
             int height = Math.Abs(StartPoint.Y - EndPoint.Y);
+            // get midpoint
+            Point midPoint = GetMidPoint();
+
+            //apply scaling
+            ApplyScaleTransform(graphics, midPoint);
+
             //for rotation
             graphics.TranslateTransform((float)(x + width / 2), (float)(y + height / 2));
             graphics.RotateTransform(RotationAngle);
             graphics.TranslateTransform(-(float)(x + width / 2), -(float)(y + height / 2));
+
+
 
             // Menggambar persegi panjang
             graphics.DrawRectangle(BorderWidth, x, y, width, height);
             graphics.FillRectangle(BrushColor, x, y, width, height);
             graphics.ResetTransform();
         }
+        // Method for calculate the midpoint
     }
 }

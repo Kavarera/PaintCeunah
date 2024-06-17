@@ -19,6 +19,8 @@ namespace PaintCeunah.models
         public Pen BorderWidth { get; set; }
         public Brush BrushColor;
 
+        public float ScaleFactor { get; set; } = 1.0f;
+
         public Shape(EnumShape shapeType, Point startPoint, Point endPoint, Color fillColor, Color borderColor, 
             Pen borderWidth, 
             float rotationAngle=0)
@@ -33,6 +35,7 @@ namespace PaintCeunah.models
             RotationAngle = rotationAngle;
             Translation = new Point(0, 0);
         }
+
 
         public abstract void Draw(Graphics graphics); // Metode abstract untuk menggambar bentuk
 
@@ -49,6 +52,23 @@ namespace PaintCeunah.models
         {
             translation.Y = translation.Y * -1;
             Translation = translation;
+        }
+
+        public void SetScaleFactor(float scaleFactor)
+        {
+            ScaleFactor = scaleFactor;
+        }
+        protected void ApplyScaleTransform(Graphics graphics, Point midPoint)
+        {
+            graphics.TranslateTransform(midPoint.X, midPoint.Y);
+            graphics.ScaleTransform(ScaleFactor, ScaleFactor);
+            graphics.TranslateTransform(-midPoint.X, -midPoint.Y);
+        }
+        protected Point GetMidPoint()
+        {
+            int midX = (StartPoint.X + EndPoint.X) / 2;
+            int midY = (StartPoint.Y + EndPoint.Y) / 2;
+            return new Point(midX, midY);
         }
     }
 }

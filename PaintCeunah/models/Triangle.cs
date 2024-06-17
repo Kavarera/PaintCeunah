@@ -22,34 +22,33 @@ namespace PaintCeunah.models
                 (trianglePoints[0].Y + trianglePoints[1].Y + trianglePoints[2].Y) / 3
             );
 
-            // Apply rotation and translation
+            // Apply rotation and translation using matrix
             Matrix transformationMatrix = new Matrix();
             transformationMatrix.Translate(Translation.X, Translation.Y);
             transformationMatrix.RotateAt(RotationAngle, centerPoint);
             graphics.Transform = transformationMatrix;
 
-            // Draw triangle
+            //for scalling
+            ApplyScaleTransform(graphics, centerPoint);
+
             graphics.DrawPolygon(BorderWidth, trianglePoints);
             graphics.FillPolygon(BrushColor, trianglePoints);
 
-            // Reset transformation
             graphics.ResetTransform();
         }
 
-        // Method to calculate equilateral triangle points based on center and base length
+        // calculate triangle points accroding to center and base length
         private Point[] GetEquilateralTrianglePoints(Point startPoint, Point endPoint)
         {
             // Calculate triangle height based on the base length
             double triangleHeight = Math.Sqrt(3) / 2 * Math.Abs(endPoint.Y - startPoint.Y);
 
-            // Calculate the third vertex (bottom vertex)
-            int bottomX = startPoint.X + (endPoint.X - startPoint.X) / 2;
-            int bottomY = startPoint.Y + (int)triangleHeight;
+            
 
             Point[] points = new Point[3];
-            points[0] = new Point((startPoint.X + endPoint.X) / 2, startPoint.Y); // top vertex
-            points[1] = new Point(endPoint.X, endPoint.Y); // base right vertex
-            points[2] = new Point(startPoint.X, endPoint.Y); // base left vertex
+            points[0] = new Point((startPoint.X + endPoint.X) / 2, startPoint.Y); // top 
+            points[1] = new Point(endPoint.X, endPoint.Y); // base right 
+            points[2] = new Point(startPoint.X, endPoint.Y); // base left 
 
             return points;
         }

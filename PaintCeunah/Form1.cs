@@ -452,5 +452,21 @@ namespace PaintCeunah
             panel1.Invalidate();
             panel1.Refresh();
         }
+
+        private void btnScale_Click(object sender, EventArgs e)
+        {
+            if (tumpukanGambar.Count > 0)
+            {
+                if (float.TryParse(tbScale.Text, out float scaleFactor) && scaleFactor > 0)
+                {
+                    tumpukanGambar.Last().SetScaleFactor(scaleFactor);
+                    drawAll();
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid scale factor.");
+                }
+            }
+        }
     }
 }
