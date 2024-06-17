@@ -13,7 +13,7 @@ PaintCeunah is a Windows application developed to provide a painting tool simila
 After drawing a shape, you may want to adjust its position, angle, or scale. You can use the menu above the screen to make these changes.
 - **Rotation**: This adjusts the angle of the shape clockwise around its midpoint. For example, rotating it 30 degrees to the right.
 - **Translation**: This moves the shape based on the X and Y coordinates you input.
-- **Scaling**: cales the shape around its midpoint. The minimum scale factor is 1, ensuring the shape remains centered without shifting its position.
+- **Scaling**: Scales the shape around its midpoint. The minimum scale factor is 1, ensuring the shape remains centered without shifting its position.
 
 ## Usage
 
@@ -26,7 +26,12 @@ After drawing a shape, you may want to adjust its position, angle, or scale. You
    - **Line**: Click and drag to draw a line.
    - **Pencil**: Click and drag to draw freehand lines.
 
-3. **Save Drawing**:
+3. **(Optional) Change Shape Properties)
+   - **Rotation**: Input the desired degree of rotation clockwise.
+   - **Translation**: Input X or Y values to move the shape. Entering 0 resets the position to its original starting point.
+   - **Scaling**:  Scale the shape, ensuring the proportions are maintained. Note that the stroke size will also increase accordingly.
+
+4. **Save Drawing**:
    - Click on the "Save As" button to save your drawing as an image file (JPEG). Choose the desired location and filename, then click "Save".
 
 ## How to Contribute
