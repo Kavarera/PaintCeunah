@@ -26,7 +26,7 @@ After drawing a shape, you may want to adjust its position, angle, or scale. You
    - **Line**: Click and drag to draw a line.
    - **Pencil**: Click and drag to draw freehand lines.
 
-3. **(Optional) Change Shape Properties)
+3. **(Optional) Change Shape Properties)**
    - **Rotation**: Input the desired degree of rotation clockwise.
    - **Translation**: Input X or Y values to move the shape. Entering 0 resets the position to its original starting point.
    - **Scaling**:  Scale the shape, ensuring the proportions are maintained. Note that the stroke size will also increase accordingly.
