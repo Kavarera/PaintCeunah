@@ -25,6 +25,9 @@ After drawing a shape, you may want to adjust its position, angle, or scale. You
    - **Rectangle**: Click and drag to draw a rectangle.
    - **Line**: Click and drag to draw a line.
    - **Pencil**: Click and drag to draw freehand lines.
+   - **Triangle**: Click and drag to draw a Equilateral triangle.
+   - **TrashCan**: Clear the canvas.
+   - **Eraser**: Click and drag to erase.
 
 3. **(Optional) Change Shape Properties**
    - **Rotation**: Input the desired degree of rotation clockwise.
