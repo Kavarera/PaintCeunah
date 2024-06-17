@@ -8,6 +8,12 @@ PaintCeunah is a Windows application developed to provide a painting tool simila
 - **Color Selection**: Choose fill and stroke colors using a color picker.
 - **Shape Customization**: Customize shapes with different fill and stroke colors, and adjust border widths.
 - **Export to Image**: Export drawings as image files (e.g., JPEG, PNG) for sharing or use in other applications.
+ 
+## Shape Properties
+After drawing a shape, you may want to adjust its position, angle, or scale. You can use the menu above the screen to make these changes.
+- **Rotation**: This adjusts the angle of the shape clockwise around its midpoint. For example, rotating it 30 degrees to the right.
+- **Translation**: This moves the shape based on the X and Y coordinates you input.
+- **Scaling**: cales the shape around its midpoint. The minimum scale factor is 1, ensuring the shape remains centered without shifting its position.
 
 ## Usage
 
