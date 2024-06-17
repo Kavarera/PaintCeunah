@@ -14,6 +14,7 @@ namespace PaintCeunah.models
         LINE,
         PENCIL,
         ERASER,
+        TRIANGLE,
         NONE
     }
 }

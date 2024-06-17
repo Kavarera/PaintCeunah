@@ -62,6 +62,7 @@
     <Compile Include="models\Rectangle.cs" />
     <Compile Include="models\Shape.cs" />
     <Compile Include="models\Square.cs" />
+    <Compile Include="models\Triangle.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

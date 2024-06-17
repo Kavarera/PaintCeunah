@@ -71,6 +71,8 @@
             this.panel10 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.canvasPanel = new System.Windows.Forms.PictureBox();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.btnTriangle = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel18.SuspendLayout();
@@ -83,6 +85,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnTriangle);
+            this.panel1.Controls.Add(this.panel19);
             this.panel1.Controls.Add(this.btnEraser);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.btnClear);
@@ -508,6 +512,25 @@
             this.canvasPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CanvasPanel_MouseMove);
             this.canvasPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CanvasPanel_MouseUp);
             // 
+            // panel19
+            // 
+            this.panel19.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel19.Location = new System.Drawing.Point(498, 64);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(15, 74);
+            this.panel19.TabIndex = 20;
+            // 
+            // btnTriangle
+            // 
+            this.btnTriangle.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnTriangle.Image = ((System.Drawing.Image)(resources.GetObject("btnTriangle.Image")));
+            this.btnTriangle.Location = new System.Drawing.Point(513, 64);
+            this.btnTriangle.Name = "btnTriangle";
+            this.btnTriangle.Size = new System.Drawing.Size(50, 74);
+            this.btnTriangle.TabIndex = 21;
+            this.btnTriangle.UseVisualStyleBackColor = true;
+            this.btnTriangle.Click += new System.EventHandler(this.btnTriangle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -582,6 +605,8 @@
         private System.Windows.Forms.Button btnMoveY;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel17;
+        private System.Windows.Forms.Panel panel19;
+        private System.Windows.Forms.Button btnTriangle;
     }
 }
 

@@ -81,6 +81,11 @@ namespace PaintCeunah
                             fillColor, strokeColor, new Pen(Color.White,
                             (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
                         break;
+                    case EnumShape.TRIANGLE:
+                        tempShape = new Triangle(currentActiveShape, startPoint, startPoint,
+                            fillColor, strokeColor, new Pen(strokeColor,
+                            (tbBorderWidth.Text.Length > 0) ? int.Parse(tbBorderWidth.Text.ToString()) : 5));
+                        break;
                     default:
                         // Default behavior
                         break;
@@ -189,6 +194,10 @@ namespace PaintCeunah
             else if(currentActiveShape == EnumShape.ERASER)
             {
                 btnEraser.BackColor = Color.Aqua;
+            }
+            else if (currentActiveShape == EnumShape.TRIANGLE)
+            {
+                btnTriangle.BackColor = Color.Aqua;
             }
         }
 
@@ -435,6 +444,13 @@ namespace PaintCeunah
             {
                 translationY = 0;
             }
+        }
+
+        private void btnTriangle_Click(object sender, EventArgs e)
+        {
+            currentActiveShape = EnumShape.TRIANGLE;
+            panel1.Invalidate();
+            panel1.Refresh();
         }
     }
 }
