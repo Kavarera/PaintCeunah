@@ -11,8 +11,8 @@ namespace PaintCeunah.models
     public class Circle : Shape
     {
         private bool isDrawingCircle = false; // Menandai apakah sedang menggambar lingkaran
-        public Circle(EnumShape shapeType, Point startPoint, Point endPoint, Color fillColor, Color borderColor, Pen borderWidth)
-            : base(shapeType, startPoint, endPoint, fillColor, borderColor, borderWidth)
+        public Circle(EnumShape shapeType, Point startPoint, Point endPoint, Color fillColor, Color borderColor, Pen borderWidth, float rotationAngle = 0)
+            : base(shapeType, startPoint, endPoint, fillColor, borderColor, borderWidth, rotationAngle)
         {
         }
 
@@ -33,13 +33,18 @@ namespace PaintCeunah.models
             else
             {
                 // Jika tombol "Alt" kiri tidak ditekan, gambar elips
-                int x = Math.Min(StartPoint.X, EndPoint.X);
-                int y = Math.Min(StartPoint.Y, EndPoint.Y);
+                int x = Math.Min(StartPoint.X, EndPoint.X) + Translation.X;
+                int y = Math.Min(StartPoint.Y, EndPoint.Y) + Translation.Y;
                 int width = Math.Abs(EndPoint.X - StartPoint.X);
                 int height = Math.Abs(EndPoint.Y - StartPoint.Y);
+                //for rotation
+                graphics.TranslateTransform((float)(x + width / 2), (float)(y + height / 2));
+                graphics.RotateTransform(RotationAngle);
+                graphics.TranslateTransform(-(float)(x + width / 2), -(float)(y + height / 2));
                 Rectangle rec = new Rectangle(x, y, width, height);
                 graphics.DrawEllipse(BorderWidth, rec);
                 graphics.FillEllipse(BrushColor, rec);
+                graphics.ResetTransform();
             }
         }
 
@@ -66,8 +71,8 @@ namespace PaintCeunah.models
         private Rectangle GetCircleRectangle()
         {
             int diameter = Math.Max(Math.Abs(EndPoint.X - StartPoint.X), Math.Abs(EndPoint.Y - StartPoint.Y));
-            int x = Math.Min(StartPoint.X, EndPoint.X);
-            int y = Math.Min(StartPoint.Y, EndPoint.Y);
+            int x = Math.Min(StartPoint.X, EndPoint.X) + Translation.X;
+            int y = Math.Min(StartPoint.Y, EndPoint.Y) + Translation.Y;
             return new Rectangle(x, y, diameter, diameter);
         }
     }

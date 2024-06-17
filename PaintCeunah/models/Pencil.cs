@@ -12,7 +12,8 @@ namespace PaintCeunah.models
     public class Pencil : Shape
     {
         private List<Point> points = new List<Point>();
-        public Pencil(EnumShape shapeType, Point startPoint, Point endPoint, Color fillColor, Color borderColor, Pen borderWidth) : base(shapeType, startPoint, endPoint, fillColor, borderColor, borderWidth)
+        public Pencil(EnumShape shapeType, Point startPoint, Point endPoint, Color fillColor, Color borderColor, Pen borderWidth, float rotationAngle = 0) : 
+            base(shapeType, startPoint, endPoint, fillColor, borderColor, borderWidth, rotationAngle)
         {
             points.Add(startPoint);
         }

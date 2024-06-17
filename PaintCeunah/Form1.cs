@@ -20,8 +20,10 @@ namespace PaintCeunah
         private Shape tempShape;
         private Color fillColor;
         private Color strokeColor = Color.Black;
-
+        private float rotationAngle = 0;
         private Bitmap tempBitmap;
+        private int translationX = 0;
+        private int translationY = 0;
 
         private bool isCircle = false; //Untuk toggle ellipse dan circle
         public Form1()
@@ -146,11 +148,6 @@ namespace PaintCeunah
                 }
                 tempShape.Draw(e.Graphics);
             }
-
-            //foreach (Shape item in tumpukanGambar)
-            //{
-            //    item.Draw(e.Graphics);
-            //}
         }
 
         private void btnCircle_Click(object sender, EventArgs e)
@@ -329,6 +326,92 @@ namespace PaintCeunah
             currentActiveShape = EnumShape.ERASER;
             panel1.Invalidate();
             panel1.Refresh();
+        }
+
+        private void btnRotate_Click(object sender, EventArgs e)
+        {
+            rotationAngle = float.Parse(tbRotate.Text);
+            tumpukanGambar.Last().SetRotationAngle(rotationAngle);
+            drawAll();
+        }
+        private void drawAll()
+        {
+
+            using(Graphics g = Graphics.FromImage(tempBitmap))
+            {
+                g.Clear(Color.White);
+                foreach (Shape item in tumpukanGambar)
+                {
+                    item.Draw(g);
+                }
+            }
+            canvasPanel.Refresh();
+        }
+
+        private void btnMoveX_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(tbMoveX.Text, out translationX) && int.TryParse(tbMoveY.Text, out translationY))
+            {
+                tumpukanGambar.Last().SetTranslation(new Point(translationX, translationY));
+                drawAll();
+            }
+        }
+
+        private void btnMoveY_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(tbMoveX.Text, out translationX) && int.TryParse(tbMoveY.Text, out translationY))
+            {
+                tumpukanGambar.Last().SetTranslation(new Point(translationX, translationY));
+                drawAll();
+            }
+        }
+
+        private void tbMoveX_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan angka, tanda minus, dan kontrol karakter
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
+            {
+                e.Handled = true;
+                translationX = int.Parse(tbMoveX.Text);
+            }
+
+            // Izinkan tanda minus hanya di posisi pertama
+            if (e.KeyChar == '-' && (sender as TextBox).SelectionStart != 0)
+            {
+                e.Handled = true;
+                translationX = int.Parse(tbMoveX.Text);
+            }
+
+            // Tidak izinkan lebih dari satu tanda minus
+            if (e.KeyChar == '-' && (sender as TextBox).Text.IndexOf('-') > -1)
+            {
+                e.Handled = true;
+                translationX = int.Parse(tbMoveX.Text);
+            }
+        }
+
+        private void tbMoveY_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan angka, tanda minus, dan kontrol karakter
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '-')
+            {
+                e.Handled = true;
+                translationY = int.Parse(tbMoveY.Text);
+            }
+
+            // Izinkan tanda minus hanya di posisi pertama
+            if (e.KeyChar == '-' && (sender as TextBox).SelectionStart != 0)
+            {
+                e.Handled = true;
+                translationY = int.Parse(tbMoveY.Text);
+            }
+
+            // Tidak izinkan lebih dari satu tanda minus
+            if (e.KeyChar == '-' && (sender as TextBox).Text.IndexOf('-') > -1)
+            {
+                e.Handled = true;
+                translationY = int.Parse(tbMoveY.Text);
+            }
         }
     }
 }
