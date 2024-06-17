@@ -350,7 +350,7 @@ namespace PaintCeunah
 
         private void btnMoveX_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(tbMoveX.Text, out translationX) && int.TryParse(tbMoveY.Text, out translationY))
+            if (int.TryParse(translationX.ToString(), out translationX) && int.TryParse(translationY.ToString(), out translationY))
             {
                 tumpukanGambar.Last().SetTranslation(new Point(translationX, translationY));
                 drawAll();
@@ -359,7 +359,7 @@ namespace PaintCeunah
 
         private void btnMoveY_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(tbMoveX.Text, out translationX) && int.TryParse(tbMoveY.Text, out translationY))
+            if (int.TryParse(translationX.ToString(), out translationX) && int.TryParse(translationY.ToString(), out translationY))
             {
                 tumpukanGambar.Last().SetTranslation(new Point(translationX, translationY));
                 drawAll();
@@ -411,6 +411,29 @@ namespace PaintCeunah
             {
                 e.Handled = true;
                 translationY = int.Parse(tbMoveY.Text);
+            }
+        }
+
+        private void tbMoveX_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                translationX = int.Parse(tbMoveX.Text);
+            }catch(Exception ex)
+            {
+                translationX = 0;
+            }
+        }
+
+        private void tbMoveY_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                translationY = int.Parse(tbMoveY.Text);
+            }
+            catch (Exception ex)
+            {
+                translationY = 0;
             }
         }
     }

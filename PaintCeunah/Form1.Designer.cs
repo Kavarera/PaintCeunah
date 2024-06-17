@@ -306,6 +306,7 @@
             this.tbMoveY.Size = new System.Drawing.Size(168, 22);
             this.tbMoveY.TabIndex = 7;
             this.tbMoveY.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMoveY_KeyPress);
+            this.tbMoveY.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbMoveY_KeyUp);
             // 
             // btnMoveY
             // 
@@ -355,6 +356,7 @@
             this.tbMoveX.Size = new System.Drawing.Size(168, 22);
             this.tbMoveX.TabIndex = 7;
             this.tbMoveX.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbMoveX_KeyPress);
+            this.tbMoveX.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbMoveX_KeyUp);
             // 
             // btnMoveX
             // 
