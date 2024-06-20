@@ -37,14 +37,9 @@ namespace PaintCeunah.models
             graphics.ResetTransform();
         }
 
-        // calculate triangle points accroding to center and base length
+        // calculate triangle points according to center and base length
         private Point[] GetEquilateralTrianglePoints(Point startPoint, Point endPoint)
         {
-            // Calculate triangle height based on the base length
-            double triangleHeight = Math.Sqrt(3) / 2 * Math.Abs(endPoint.Y - startPoint.Y);
-
-            
-
             Point[] points = new Point[3];
             points[0] = new Point((startPoint.X + endPoint.X) / 2, startPoint.Y); // top 
             points[1] = new Point(endPoint.X, endPoint.Y); // base right 

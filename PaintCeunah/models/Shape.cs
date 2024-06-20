@@ -46,7 +46,7 @@ namespace PaintCeunah.models
         }
         public void SetRotationAngle(float angle)
         {
-            RotationAngle = angle;
+            RotationAngle = -1*angle;
         }
         public void SetTranslation(Point translation)
         {

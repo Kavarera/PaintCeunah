@@ -468,5 +468,19 @@ namespace PaintCeunah
                 }
             }
         }
+
+        private void tbScale_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Hanya izinkan angka, kontrol karakter, dan titik untuk desimal
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && e.KeyChar != '.')
+            {
+                e.Handled = true;
+            }
+
+            if(e.KeyChar == '.' && (sender as TextBox).Text.Contains('.'))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
